@@ -17,12 +17,22 @@ CMD ["ls"]
 
 2. Build and run the container
 ```sh
-docker build -t broken-path
+docker build -t broken-path .
 
 docker run broken-path
 ```
 
 3. Error you'll get
 ```sh
-
+exec: "ls" executable file not found $PATH
 ```
+
+4. The fix
+```docker
+CMD ["/bin/ls"]
+```
+
+## What you will learn
+- PATH lookup mechanism
+- CMD is not magic
+- Absolute paths matters
