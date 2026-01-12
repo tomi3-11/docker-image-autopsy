@@ -31,13 +31,37 @@ CMD ["sh"]
 2. Now build and run the container
 ```sh
 # Build the image
-docker build -t broken-shell
+docker build -t broken-shell .
 
 # run the container
-docker run broken-shell
+docker run -d broken-shell
 ```
 
 3. Now here comes the error
 ```sh
 exec: "sh": executable file not found
 ```
+### More detailed error
+```sh
+
+docker: Error response from daemon: failed to create task for: runc create failed: unable to start container process: error $PATH
+
+```
+
+## Now the fix
+```docker
+# Pull the latest alpine image
+FROM alpine
+
+# Install the shell inside the container
+RUN apk add --no-cache bash
+
+# The command to run
+CMD ["bash"]
+
+```
+
+## What to learn here
+- `/bin/sh` is required.
+- Containers don't magically provide shells
+- ENTRYPOINT depends on filesystem
