@@ -17,7 +17,7 @@ CMD ["ls"]
 
 ## You might an error like this
 ```bash
-Error loading shared library libc.musl-x86_64.so.1
+exec /bin/ls: no such file or directory 
 
 ```
 
