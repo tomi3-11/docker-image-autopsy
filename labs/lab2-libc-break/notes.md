@@ -40,3 +40,12 @@ docker exec -it <container-name> bash
 
 # and taraa u are inside now play around with it
 ```
+
+## What you can learn from this
+- Binaries depend on shared libraries
+- `/lib` is non-negotiable
+- Static vs dynamic linking
+
+## Fix it
+- Restore `/lib`
+- Or use statically linked libraries
