@@ -16,8 +16,23 @@ CMD ["hello"]
 ```
 2. Now Build the image and run the container
 ```sh
-docker run image goodbye
+# Build image
+docker build -t entry-point .
+
+# run container
+docker run entry-point
+
+# Expected outpu
+
+hello
 
 ```
+## What you will learn
+- CMD is overideable
+- ENTRYPOINT is fixed
+- Runtime args behaviour
+
+## How to fix it.
+- Use correct combination depending on intent
 
 
