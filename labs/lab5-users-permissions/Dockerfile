@@ -5,4 +5,10 @@ RUN adduser -D appuser
 
 USER appuser
 
-RUN touch /root/file.txt
+# The bug
+#RUN touch /root/file.txt
+
+# The fix
+WORKDIR /home/appuser
+
+RUN touch file.txt
