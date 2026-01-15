@@ -1,7 +1,7 @@
 # alpine image
 FROM alpine
 
-ENTRYPOINT ["echo"]
+ENTRYPOINT ["echo", "hello"]
 
-CMD ["hello"]
+# CMD ["hello"]
 
