@@ -28,5 +28,29 @@ docker run permission
 3. Expected Error
 ```sh
 
+> [3/3] RUN touch /root/file.txt:
+1.038 touch: /root/file.txt: Permission denied
+------
+Dockerfile:8
+--------------------
+   6 |     USER appuser
+   7 |     
+   8 | >>> RUN touch /root/file.txt
+   9 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c touch /root/file.txt" did not complete successfully: exit code: 1
 
 ```
+
+4. Fix
+```sh
+
+
+```
+- Correct ownership
+- Change work directory
+
+## What you will learn
+- Linux permissions still apply
+- USER affects build vs runtime
+- Root != default forever
