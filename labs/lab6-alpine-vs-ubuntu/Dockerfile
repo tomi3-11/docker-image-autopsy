@@ -12,4 +12,4 @@ COPY ubuntu-build-binary /app
 # making /app executable
 # RUN chmod +x /app
 
-RUN ["/app"]
+CMD ["/app"]
