@@ -1,8 +1,8 @@
 FROM alpine
 
 # The fix is here: 
-2. By installing compatability layer(glibc) 
-RUN apk --no-cache gcompat libc6-compat
+# 2. By installing compatability layer(glibc) 
+RUN apk add --no-cache gcompat libc6-compat
 
 COPY ubuntu-built-binary /app
 
