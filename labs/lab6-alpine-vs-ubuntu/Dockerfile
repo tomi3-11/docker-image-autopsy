@@ -13,18 +13,15 @@
 # 3. By using statis binary
 FROM ubuntu AS builder
 
-# install the compiler
-#RUN apt-get update && apt-get install build-essential -y
+COPY . .
 
-# Do this if you did't have build you code else uncomment the line after "From alpine below"
-# build the code here (found in this lab dir)
-#RUN gcc hello.c -o hello
+# install the compiler
+RUN apt-get update && apt-get install build-essential -y
+
+RUN gcc hello.c -o ubuntu-build-binary
 
 FROM alpine
-# Only uncomment for if already built code outside
 COPY --from=builder ubuntu-build-binary /app
-
-#COPY --from=builder hello /app
 
 # --- Continuation ---
 # Use the line below for fix 1 & fix 2 only
