@@ -1,12 +1,15 @@
-FROM alpine
+# FROM alpine
 
-# The fix is here: 
+# The fixes are here:
+# 1. Use ubuntu base image
+FROM ubuntu 
+
 # 2. By installing compatability layer(glibc) 
-RUN apk add --no-cache gcompat libc6-compat
+# RUN apk add --no-cache gcompat libc6-compat
 
-COPY ubuntu-built-binary /app
+COPY ubuntu-build-binary /app
 
 # making /app executable
-RUN chmod +x /app
+# RUN chmod +x /app
 
 RUN ["/app"]
