@@ -14,16 +14,21 @@
 FROM ubuntu AS builder
 
 # install the compiler
-RUN sudo apt-get update && sudo apt-get install build-essential -y
+#RUN apt-get update && apt-get install build-essential -y
 
+# Do this if you did't have build you code else uncomment the line after "From alpine below"
 # build the code here (found in this lab dir)
-gcc hello.c -o hello
+#RUN gcc hello.c -o hello
 
 FROM alpine
-COPY --from=builder hello /app
+# Only uncomment for if already built code outside
+COPY --from=builder ubuntu-build-binary /app
+
+#COPY --from=builder hello /app
 
 # --- Continuation ---
-COPY ubuntu-build-binary /app
+# Use the line below for fix 1 & fix 2 only
+# COPY ubuntu-build-binary /app
 
 
 CMD ["/app"]
