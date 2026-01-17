@@ -1,4 +1,3 @@
-# FROM alpine
 
 # --- Fixes ---
 # The fixes are here:
@@ -16,12 +15,14 @@ FROM ubuntu AS builder
 COPY . .
 
 # install the compiler
-RUN apt-get update && apt-get install build-essential -y
+RUN apt-get update && apt-get install build-essential bash -y
 
-RUN gcc hello.c -o ubuntu-build-binary
+RUN gcc -static hello.c -o ubuntu-build-binary
 
 FROM alpine
 COPY --from=builder ubuntu-build-binary /app
+
+# --- end of fix ---
 
 # --- Continuation ---
 # Use the line below for fix 1 & fix 2 only
@@ -29,3 +30,4 @@ COPY --from=builder ubuntu-build-binary /app
 
 
 CMD ["/app"]
+
