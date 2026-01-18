@@ -28,6 +28,15 @@ docker run scratch-image
 
 3. Expected error.
 ```sh
-
+exec /hello: no such file or directory
 
 ```
+
+## What you learn
+- No shell
+- No libc
+- Only you binary exists
+
+## The fix
+- Static binary required
+- Explicit filesystem creation
